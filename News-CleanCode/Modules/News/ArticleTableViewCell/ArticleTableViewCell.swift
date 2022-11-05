@@ -8,7 +8,7 @@
 import UIKit
 
 final class ArticleTableViewCell: UITableViewCell {
-            
+    
     private lazy var lblTitle: UILabel = {
         var label = UILabel()
         label.adjustsFontSizeToFitWidth = true
@@ -31,6 +31,7 @@ final class ArticleTableViewCell: UITableViewCell {
     
     private lazy var bgView: UIView = {
         var view = UIView()
+        backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -48,7 +49,7 @@ final class ArticleTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     //-----------------------------------------------------------------------
     //  MARK: - Custhom methods
     //-----------------------------------------------------------------------
@@ -86,6 +87,7 @@ final class ArticleTableViewCell: UITableViewCell {
         lblTitle.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: 8).isActive = true
         lblTitle.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: -8).isActive = true
     }
+    
     private func setSubTitleConstraint(){
         lblDescription.topAnchor.constraint(equalTo: lblTitle.bottomAnchor, constant: 8).isActive = true
         lblDescription.leadingAnchor.constraint(equalTo: lblTitle.leadingAnchor).isActive = true
