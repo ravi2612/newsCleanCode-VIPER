@@ -6,6 +6,11 @@
 //
 import UIKit
 
+enum NewsListRouterConstants {
+    static var news = "News"
+    static var newsListIdentifier = "NewsListView"
+}
+
 final class NewsListRouter {
     
     var storyboard: UIStoryboard!
@@ -14,9 +19,9 @@ final class NewsListRouter {
     
     init() {
         
-        storyboard = UIStoryboard(name: "News", bundle: nil)
+        storyboard = UIStoryboard(name: NewsListRouterConstants.news, bundle: nil)
         
-        if let controller = storyboard.instantiateViewController(withIdentifier: "NewsListView") as? NewsListViewController {
+        if let controller = storyboard.instantiateViewController(withIdentifier: NewsListRouterConstants.newsListIdentifier) as? NewsListViewController {
             self.viewController = controller
         }
     }
@@ -29,5 +34,4 @@ final class NewsListRouter {
         let navController = UINavigationController(rootViewController: viewController)
         UIApplication.topViewController()?.present(navController, animated: true, completion: nil)
     }
-    
 }

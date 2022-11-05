@@ -12,6 +12,7 @@ final class NewsTableViewController: UITableViewController,
                                      UISearchBarDelegate{
     
     @IBOutlet weak var searchBar: UISearchBar!
+    
     var presenter: NewsPresenter?
     var loading: UIActivityIndicatorView?
     
@@ -53,15 +54,15 @@ final class NewsTableViewController: UITableViewController,
     
     private func configTableView(){
         
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 140
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.register(ArticleTableViewCell.self, forCellReuseIdentifier: String(describing: ArticleTableViewCell.self))
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.identifier) as? ArticleTableViewCell,
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleTableViewCell.self)) as? ArticleTableViewCell,
            let article = self.presenter?.articleAtIndex(indexPath.row){
             cell.setup(article: article)
             return cell
@@ -78,6 +79,10 @@ final class NewsTableViewController: UITableViewController,
         if let article = self.presenter?.articleAtIndex(indexPath.row) {
             self.presenter?.showArticleSelected(article)
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 140
     }
     
     //-----------------------------------------------------------------------
