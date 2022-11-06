@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -55,74 +54,8 @@
             </objects>
             <point key="canvasLocation" x="971.01449275362324" y="102.45535714285714"/>
         </scene>
-        <!--News List View Controller-->
-        <scene sceneID="F2i-87-guR">
-            <objects>
-                <viewController storyboardIdentifier="NewsListView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mGb-Bo-dpa" customClass="NewsListViewController" customModule="News_CleanCode" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="z2o-T2-00m">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajT-QD-bdW">
-                                <rect key="frame" x="0.0" y="143" width="414" height="719"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhF-bn-stV">
-                                <rect key="frame" x="179.5" y="73" width="55" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="29" id="Pv4-HL-Dy5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="System Font" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-newspaper" translatesAutoresizingMaskIntoConstraints="NO" id="JLh-fc-8Ax">
-                                <rect key="frame" x="20" y="64" width="79" height="67"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="67" id="a6s-IC-cuJ"/>
-                                    <constraint firstAttribute="width" constant="79" id="wKo-jW-NSf"/>
-                                </constraints>
-                            </imageView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="7NR-8B-UPd">
-                                <rect key="frame" x="177" y="418" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="G7d-qC-heJ"/>
-                                    <constraint firstAttribute="width" constant="60" id="Idy-jS-5dm"/>
-                                </constraints>
-                                <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="9rU-RY-9nn"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="bhF-bn-stV" firstAttribute="top" secondItem="9rU-RY-9nn" secondAttribute="top" constant="25" id="0xP-MS-NgN"/>
-                            <constraint firstItem="ajT-QD-bdW" firstAttribute="bottom" secondItem="9rU-RY-9nn" secondAttribute="bottom" id="5x6-sC-kJQ"/>
-                            <constraint firstItem="JLh-fc-8Ax" firstAttribute="leading" secondItem="9rU-RY-9nn" secondAttribute="leading" constant="20" id="8Ov-68-fsV"/>
-                            <constraint firstItem="7NR-8B-UPd" firstAttribute="centerX" secondItem="z2o-T2-00m" secondAttribute="centerX" id="C6u-08-nRe"/>
-                            <constraint firstItem="ajT-QD-bdW" firstAttribute="top" secondItem="bhF-bn-stV" secondAttribute="bottom" constant="41" id="HXq-7h-o4g"/>
-                            <constraint firstItem="7NR-8B-UPd" firstAttribute="centerY" secondItem="z2o-T2-00m" secondAttribute="centerY" id="OJA-gG-HVB"/>
-                            <constraint firstItem="JLh-fc-8Ax" firstAttribute="top" secondItem="9rU-RY-9nn" secondAttribute="top" constant="16" id="OUa-xq-Aub"/>
-                            <constraint firstItem="ajT-QD-bdW" firstAttribute="leading" secondItem="9rU-RY-9nn" secondAttribute="leading" id="ZFj-vG-ZOU"/>
-                            <constraint firstItem="9rU-RY-9nn" firstAttribute="trailing" secondItem="ajT-QD-bdW" secondAttribute="trailing" id="s1w-YR-PtG"/>
-                            <constraint firstItem="bhF-bn-stV" firstAttribute="centerX" secondItem="z2o-T2-00m" secondAttribute="centerX" id="wd5-OM-5rl"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="vwActivityIndicator" destination="7NR-8B-UPd" id="1KD-1v-bze"/>
-                        <outlet property="webView" destination="ajT-QD-bdW" id="rEF-Jf-1jX"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xrq-YM-In7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1892.753623188406" y="101.78571428571428"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="icon-newspaper" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

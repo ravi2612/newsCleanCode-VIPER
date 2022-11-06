@@ -8,22 +8,29 @@ import UIKit
 import WebKit
 
 final class NewsListViewController: UIViewController,
-                                    WKNavigationDelegate{
+                                    WKNavigationDelegate,
+                                    NewsListViewDelegate{
     
     var presenter: NewsListPresenter?
     private var articleList: ArticleList?
     private var url: URL?
-    
-    @IBOutlet weak var webView: WKWebView!
-    @IBOutlet weak var vwActivityIndicator: UIActivityIndicatorView!
+    weak var customView: NewsListView?
+        
     //-----------------------------------------------------------------------
     //    MARK: App life cycle
     //-----------------------------------------------------------------------
+    
+    override func loadView() {
+        view = NewsListView(webDelegate: self, delegate: self)
+        customView = view as? NewsListView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
     }
+    
     //-----------------------------------------------------------------------
     //    MARK: Custom Methods
     //-----------------------------------------------------------------------
@@ -36,14 +43,9 @@ final class NewsListViewController: UIViewController,
     
     func configWebView() {
         
-        webView.configuration.mediaTypesRequiringUserActionForPlayback = .all
-        webView.configuration.allowsInlineMediaPlayback = false
-        
         if let url = self.presenter?.getArticleURL(){
             self.loading(true)
-            webView.navigationDelegate = self
-            webView.load(URLRequest(url: url))
-            self.view.layoutIfNeeded()
+            customView?.loadNews(url: url)
         }
     }
     
@@ -62,14 +64,13 @@ final class NewsListViewController: UIViewController,
     func fail(message: String?) { }
     
     func loading(_ loading: Bool) {
-        
-        DispatchQueue.main.async {
-            self.vwActivityIndicator.isHidden = !loading
-            if loading {
-                self.vwActivityIndicator.startAnimating()
-            }else{
-                self.vwActivityIndicator.stopAnimating()
-            }
-        }
+        showactivityIndicator(loading)
+    }
+    //-----------------------------------------------------------------------
+    //    MARK: newListView Delegate
+    //-----------------------------------------------------------------------
+    
+    func showactivityIndicator(_ bool: Bool) {
+        customView?.activityIndicator(bool)
     }
 }
